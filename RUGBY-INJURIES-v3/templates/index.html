@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rugby Injuries Detection System</title>
+	<script src="https://cdn.jsdelivr.net/npm/inferencejs"></script>
+
+	<link rel="stylesheet" href="/static/styles.css" />
+	<script>
+		// Roboflow configuration
+		var publishable_key = "rf_vyajtOUts2Vy1F25DaeHReCEQKj2";
+		const CONFIDENCE_THRESHOLD = 0.1; // Initial confidence threshold
+		const MODEL_NAME = "rugby-injuries-new-kzlf0";
+		const MODEL_VERSION = 1;
+	</script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #f4f4f4; /* Light grey background */
+			color: #333;
+		}
+
+		h1 {
+			text-align: center;
+			color: #333;
+			margin-bottom: 10px;
+		}
+
+		p {
+			text-align: center;
+			margin-bottom: 15px;
+			line-height: 1.5;
+		}
+
+		.infer-widget {
+			position: relative; /* Needed for absolute positioning of children */
+			width: 100%; /* Make it responsive */
+			max-width: 640px; /* Max width */
+			margin: 20px auto; /* Center the container */
+			border: 1px solid #ccc;
+			background-color: #000; /* Black background for video area */
+			overflow: hidden;
+			aspect-ratio: 640 / 480; /* Maintain aspect ratio */
+		}
+
+		#video_canvas {
+			position: absolute;
+			top: 0; /* Position at the top of the container */
+			left: 0; /* Position at the left of the container */
+			z-index: 10; /* Ensure canvas is above video */
+			width: 100%; /* Match container width */
+			height: 100%; /* Match container height */
+			/* Canvas drawing dimensions (width/height attributes) will be set by JavaScript */
+		}
+
+		#video1 {
+			display: block;
+			width: 100%; /* Match container width */
+			height: 100%; /* Match container height */
+			object-fit: contain; /* Ensure video fits without stretching */
+			z-index: 5; /* Below canvas */
+		}
+
+		#settings {
+			max-width: 640px;
+			margin: 20px auto;
+			padding: 15px;
+			background-color: #fff;
+			border-radius: 8px;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+		}
+
+		#settings label {
+			display: block;
+			margin-bottom: 5px;
+			font-weight: bold;
+		}
+
+		.slider {
+			width: 100%;
+			margin: 10px 0;
+		}
+
+		.styled-button {
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 5px;
+			transition: background-color 0.3s ease;
+		}
+
+		.styled-button:hover {
+			background-color: #45a049;
+		}
+
+		.styled-button-turqouise {
+			background-color: #00b7eb; /* Turquoise */
+		}
+
+		.styled-button-turqouise:hover {
+			background-color: #0099cc;
+		}
+
+		.button-container {
+			display: flex;
+			gap: 10px;
+			margin-top: 20px;
+			justify-content: center;
+		}
+
+		#loading {
+			text-align: center;
+			font-weight: bold;
+			margin: 20px 0;
+			color: #555;
+		}
+
+		.links {
+			text-align: center;
+			margin-top: 30px;
+		}
+
+		.links a {
+			margin: 0 10px;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			body {
+				padding: 10px;
+			}
+
+			.infer-widget, #settings {
+				margin: 10px auto;
+			}
+
+			.styled-button {
+				font-size: 14px;
+				padding: 8px 15px;
+			}
+
+			.button-container {
+				flex-direction: column; /* Stack buttons on small screens */
+				align-items: center; /* Center stacked buttons */
+				gap: 5px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h1>Franklyn Broadhead - Rugby Injuries Detection System</h1>
+		<p>This System uses HTML, CSS, JavaScript and Python. It is based on the demo files provided by Roboflow.com</p>
+		<p>The below example is running my Rugby injuries model version 4</p>
+		<p id="loading">Loading model...</p>
+
+		<section class="infer-widget">
+			<canvas width="640" height="480" id="video_canvas"></canvas>
+			</section>
+
+		<section id="settings">
+			<label for="confidence">Prediction Confidence %</label><br>
+			<input type="range" min="1" max="100" value="60" class="slider" id="confidence">
+			</section>
+
+		<section class="links">
+			<a href="https://blog.roboflow.com/getting-started-with-roboflow/" class="styled-button">Build a Custom Model</a>
+			<a href="https://universe.roboflow.com" class="styled-button styled-button-turqouise">Explore 50k+ Models and Datasets</a>
+		</section>
+
+		<script src="/static/script.js"></script>
+	</main>
+</body>
+</html>

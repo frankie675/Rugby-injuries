@@ -1,0 +1,60 @@
+/* Add to your styles.css file */
+
+.infer-widget {
+  position: relative;
+  width: 640px;
+  height: 480px;
+  margin: 0 auto;
+}
+
+#video_canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+#video1 {
+  position: relative;
+  z-index: 5;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.styled-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.styled-button-turqouise {
+  background-color: #00b7eb;
+}
+
+.upload-container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.upload-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#loading {
+  text-align: center;
+  font-weight: bold;
+  margin: 20px 0;
+}
