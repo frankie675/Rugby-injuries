@@ -1,53 +1,125 @@
-Rugby Injuries Detection System
-This project is a web-based application designed to detect potential rugby injuries in real-time using a webcam feed and a machine learning model.
-Project Description
-The system utilises a Flask backend to serve a frontend built with HTML, CSS, and JavaScript. The core functionality involves using the Roboflow.js library to run an object detection model directly in the user's browser. When the model detects an "Injured Player" with a confidence level above a user-defined threshold, a visual notification appears on the screen. This notification includes an alert message and a freeze-frame image of the moment the potential injury was detected, showing the full frame with the bounding boxes. The user can then acknowledge the notification by clicking "Accept" or "Deny".
-Technologies Used
-Backend: Python (Flask)
-Frontend:
-HTML
-CSS
-JavaScript
-Roboflow.js (for browser-based object detection)
-Setup and Running
-To set up and run this project, you will need Python and Flask installed. You will also need a Roboflow account and a trained object detection model for rugby injuries or another object detection model.
-Using an Online Code System (like Replit, codepen, code sand box)
-Online code systems like Replit provide an environment where you can run this project without installing Python and Flask locally.
-Create a new Repl: Go to Replit and create a new Repl. Choose the Flask template.
-Upload Project Files:
-In the file explorer pane on the left, you should see main.py.
-Create a new folder named templates. Upload index.html into the templates folder.
-Create a new folder named static. Upload script.js and styles.css into the static folder.
-Update Roboflow Model Details:
-Open templates/index.html.
-Replace "rf_vyajtOUts2Vy1F25DaeHReCEQKj2" with your Roboflow publishable key.
-Update MODEL_NAME, MODEL_VERSION, and INJURED_PLAYER_CLASS to match your specific trained model. The INJURED_PLAYER_CLASS must exactly match the class name in your model's output (e.g., "Injured Player").
-Run the Repl: Click the "Run" button at the top of the Replit interface. Replit will install the necessary dependencies (like Flask) and start the web server.
-Access the Application: Replit will provide a web view of your running application. You may need to open it in a new tab for the webcam to work correctly.
-Running Locally
-Clone or download the project files: Ensure you have main.py, index.html, script.js, and styles.css. Place index.html in a templates folder and script.js and styles.css in a static folder, both in the same directory as main.py.
-Install Flask: If you don't have Flask installed, you can install it using pip:
-pip install Flask
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - Rugby Injuries Detection System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rugby Injuries Detection System</h1>
 
+    <h2>Project Description</h2>
+    <p>The system utilises a Flask backend to serve a frontend built with HTML, CSS, and JavaScript. The core functionality involves using the Roboflow.js library to run an object detection model directly in the user's browser. When the model detects an an "Injured Player" with a confidence level above a user-defined threshold, a visual notification appears on the screen. This notification includes an alert message and a freeze-frame image of the moment the potential injury was detected, showing the full frame with the bounding boxes. The user can then acknowledge the notification by clicking "Accept" or "Deny".</p>
 
-Update Roboflow Model Details:
-Open templates/index.html.
-Replace "rf_vyajtOUts2Vy1F25DaeHReCEQKj2" with your Roboflow publishable key.
-Update MODEL_NAME, MODEL_VERSION, and INJURED_PLAYER_CLASS to match your specific trained model. The INJURED_PLAYER_CLASS must exactly match the class name in your model's output (e.g., "Injured Player").
-Run the Flask Application:
-Open your terminal or command prompt.
-Navigate to the directory where main.py is located.
-Run the application using the command:
-python main.py
+    <h2>Technologies Used</h2>
+    <ul>
+        <li><strong>Backend:</strong> Python (Flask)</li>
+        <li><strong>Frontend:</strong>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Roboflow.js (for browser-based object detection)</li>
+            </ul>
+        </li>
+    </ul>
 
+    <h2>Setup and Running</h2>
+    <p>To set up and run this project, you will need Python and Flask installed. You will also need a Roboflow account and a trained object detection model for rugby injuries or another object detection model.</p>
 
-Access the Application: Open your web browser and go to the address where the Flask application is running (usually http://127.0.0.1:5000/).
-Features
-Real-time Object Detection: Utilises the webcam feed to detect objects defined in the trained Roboflow model.
-Bounding Boxes and Labels: Displays bounding boxes and class labels with confidence scores around detected objects on the video feed.
-Adjustable Confidence Threshold: A slider allows users to set the minimum confidence level for detections to be displayed and trigger notifications.
-Injury Detection Notification: When an object with the specified INJURED_PLAYER_CLASS is detected above the confidence threshold, a notification appears.
-Freeze-Frame Image: The notification includes a static image of the canvas at the moment of detection, showing the video frame with all drawn bounding boxes.
-User Interaction: "Accept" and "Deny" buttons allow the user to acknowledge the injury notification.
-Credits
-This project is based on concepts and tools provided by Roboflow.
+    <h3>Using an Online Code System (like Replit, codepen, code sand box)</h3>
+    <p>Online code systems like Replit provide an environment where you can run this project without installing Python and Flask locally.</p>
+    <ol>
+        <li><strong>Create a new Repl:</strong> Go to <a href="https://replit.com/">Replit</a> and create a new Repl. Choose the <strong>Flask</strong> template.</li>
+        <li><strong>Upload Project Files:</strong>
+            <ul>
+                <li>In the file explorer pane on the left, you should see <code>main.py</code>.</li>
+                <li>Create a new folder named <code>templates</code>. Upload <code>index.html</code> into the <code>templates</code> folder.</li>
+                <li>Create a new folder named <code>static</code>. Upload <code>script.js</code> and <code>styles.css</code> into the <code>static</code> folder.</li>
+            </ul>
+        </li>
+        <li><strong>Update Roboflow Model Details:</strong>
+            <ul>
+                <li>Open <code>templates/index.html</code>.</li>
+                <li>Replace <code>"rf_vyajtOUts2Vy1F25DaeHReCEQKj2"</code> with your Roboflow publishable key.</li>
+                <li>Update <code>MODEL_NAME</code>, <code>MODEL_VERSION</code>, and <code>INJURED_PLAYER_CLASS</code> to match your specific trained model. The <code>INJURED_PLAYER_CLASS</code> must exactly match the class name in your model's output (e.g., <code>"Injured Player"</code>).</li>
+            </ul>
+        </li>
+        <li><strong>Run the Repl:</strong> Click the "Run" button at the top of the Replit interface. Replit will install the necessary dependencies (like Flask) and start the web server.</li>
+        <li><strong>Access the Application:</strong> Replit will provide a web view of your running application. You may need to open it in a new tab for the webcam to work correctly.</li>
+    </ol>
+
+    <h3>Running Locally</h3>
+    <ol>
+        <li><strong>Clone or download the project files:</strong> Ensure you have <code>main.py</code>, <code>index.html</code>, <code>script.js</code>, and <code>styles.css</code>. Place <code>index.html</code> in a <code>templates</code> folder and <code>script.js</code> and <code>styles.css</code> in a <code>static</code> folder, both in the same directory as <code>main.py</code>.</li>
+        <li><strong>Install Flask:</strong> If you don't have Flask installed, you can install it using pip:
+            <pre><code class="language-bash">pip install Flask</code></pre>
+        </li>
+        <li><strong>Update Roboflow Model Details:</strong>
+            <ul>
+                <li>Open <code>templates/index.html</code>.</li>
+                <li>Replace <code>"rf_vyajtOUts2Vy1F25DaeHReCEQKj2"</code> with your Roboflow publishable key.</li>
+                <li>Update <code>MODEL_NAME</code>, <code>MODEL_VERSION</code>, and <code>INJURED_PLAYER_CLASS</code> to match your specific trained model. The <code>INJURED_PLAYER_CLASS</code> must exactly match the class name in your model's output (e.g., <code>"Injured Player"</code>).</li>
+            </ul>
+        </li>
+        <li><strong>Run the Flask Application:</strong>
+            <ul>
+                <li>Open your terminal or command prompt.</li>
+                <li>Navigate to the directory where <code>main.py</code> is located.</li>
+                <li>Run the application using the command:
+                    <pre><code class="language-bash">python main.py</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li><strong>Access the Application:</strong> Open your web browser and go to the address where the Flask application is running (usually <code>http://127.0.0.1:5000/</code>).</li>
+    </ol>
+
+    <h2>Features</h2>
+    <ul>
+        <li><strong>Real-time Object Detection:</strong> Utilises the webcam feed to detect objects defined in the trained Roboflow model.</li>
+        <li><strong>Bounding Boxes and Labels:</strong> Displays bounding boxes and class labels with confidence scores around detected objects on the video feed.</li>
+        <li><strong>Adjustable Confidence Threshold:</strong> A slider allows users to set the minimum confidence level for detections to be displayed and trigger notifications.</li>
+        <li><strong>Injury Detection Notification:</strong> When an object with the specified <code>INJURED_PLAYER_CLASS</code> is detected above the confidence threshold, a notification appears.</li>
+        <li><strong>Freeze-Frame Image:</strong> The notification includes a static image of the canvas at the moment of detection, showing the video frame with all drawn bounding boxes.</li>
+        <li><strong>User Interaction:</strong> "Accept" and "Deny" buttons allow the user to acknowledge the injury notification.</li>
+    </ul>
+
+    <h2>Credits</h2>
+    <p>This project is based on concepts and tools provided by <a href="https://roboflow.com/">Roboflow</a>.</p>
+
+</body>
+</html>
