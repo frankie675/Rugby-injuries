@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Roboflow + Replit Example</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/inferencejs"></script>
+
+  <link rel="stylesheet" href="/static/styles.css" />
+
+  <script>
+    // Replace the key below with your Roboflow publishable key
+    var publishable_key = "rf_vyajtOUts2Vy1F25DaeHReCEQKj2";
+
+    // Change these values to set your model name, version, and the
+    // confidence threshold that must be met for the model to return
+    // a prediction.
+
+    // We recommend setting a low CONFIDENCE_THRESHOLD value while testing
+    // and filtering out predictions by confidence level using the
+    //"Prediction Confidence %" filter
+
+    const CONFIDENCE_THRESHOLD = 0.1;
+    const MODEL_NAME = "rugby-injuries-new-kzlf0";
+    const MODEL_VERSION = 1;
+
+    // Define the class name for injured players from your model
+    const INJURED_PLAYER_CLASS = "Injured Player"; // Corrected class name based on your feedback
+  </script>
+</head>
+
+<body>
+  <main>
+    <h1>Franklyn Broadhead - Rugby Injuries Detection System</h1>
+    <p>This System uses HTML, CSS, Java script and Python. It is based on the demo files provided by Roboflow.com</p>
+    <p>The below example is running my Rugby injuries model version 4</a></p>
+    <p id="loading">Loading...</p>
+
+    <section class="infer-widget">
+      <canvas width="640" height="480" id="video_canvas"></canvas>
+    </section>
+
+    <div id="notification-area" class="hidden">
+        <p id="detection-indicator" class="text-lg font-bold"></p>
+        <img id="detected-player-image" src="" alt="Detected Injured Player">
+        <div class="notification-actions">
+            <button id="accept-injury" class="styled-button notification-button">Accept</button>
+            <button id="deny-injury" class="styled-button notification-button deny-button">Deny</button>
+        </div>
+    </div>
+
+
+    <section id="settings">
+      <label for="confidence">Prediction Confidence %</label><br>
+      <input type="range" min="1" max="100" value="60" class="slider" id="confidence">
+    </section>
+
+    <section class="links">
+      <a href="https://blog.roboflow.com/getting-started-with-roboflow/" class="styled-button">Build a Custom Model</a>
+      <a href="https://universe.roboflow.com" class="styled-button styled-button-turqouise">Explore 50k+
+        Models and Datasets</a>
+    </section>
+
+    <script src="/static/script.js"></script>
+  </main>
+</body>
+
+</html>
